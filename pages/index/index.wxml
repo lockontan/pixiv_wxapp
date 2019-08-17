@@ -1,0 +1,68 @@
+<!--index.wxml-->
+<view style="height: 100%">
+  <scroll-view scroll-x class="tab-bar" scroll-left="{{barScrollLeft}}" style="pointer-events: {{disabled ? 'none' : ''}}">
+    <!-- <view class="tab-bar-link" style="transform: {{transform}}"></view> -->
+    <view wx:for="{{typeArr}}" wx:key="{{item.value}}" class="tab-bar-item {{barIndex === item.index ? 'active' : ''}}" bindtap="moveBar" data-item="{{item}}">
+      {{item.name}}
+    </view>
+    <view class="tab-bar-item">
+      <picker mode="date" value="{{dateValue}}" start="{{startDate}}" end="{{endDate}}" bindchange="dateChange">往期</picker>
+    </view>
+  </scroll-view>
+  <view class="toggle-view">
+    <view bindtap="toggleView" data-type="1" style="display: flex; align-items: center; height: 100%">
+      <image src="{{viewType == 1 ? '/assets/list1-active.png' : '/assets/list1.png'}}" class="toggle-view-image1"></image>
+    </view>
+    <view bindtap="toggleView" data-type="2" style="display: flex; align-items: center; height: 100%">
+      <image src="{{viewType == 2 ? '/assets/list2-active.png' : '/assets/list2.png'}}" class="toggle-view-image2"></image>
+    </view>
+  </view>
+  <view style="height: 80rpx"></view>
+  <swiper current="{{barIndex}}" bindchange="swipChange" style="pointer-events: {{disabled ? 'none' : ''}}">
+    <swiper-item wx:for="{{typeArr}}" wx:key="{{item.value}}">
+      <scroll-view class="image-wrap" scroll-y lower-threshold="150" bindscrolltolower="pullUp" scroll-top="{{scrollTopArr[item.index]}}" scroll-with-animation bindscroll="scroll">
+        <view wx:if="{{viewType == 1}}" class="image-content">
+          <view wx:for="{{images[item.index]}}" wx:key="{{item}}" class="image-item-two" bindtap="goDetail" data-item="{{item}}">
+            <view class="imgbox">
+              <!-- <image src="https://img.tanzijun.com/pixiv/img/76043486/76043486_p0_square1200.png" class="image" lazy-load="true" mode="aspectFit"></image> -->
+              <image src="{{item.illust_url}}" class="image" lazy-load="true" mode="aspectFit"></image>
+                <view class="pages" wx:if="{{item.pages > 1}}">
+                <image src="/assets/pages.svg"></image>
+                <view>{{item.pages}}</view>
+              </view>
+            </view>
+            <view class="works-info">
+              <view class="works-data">
+                <view class="works-title">{{item.illust_name}}</view>
+                <view class="works-author">
+                  <view class="by">by</view>
+                  <view class="author">{{item.user_name}}</view>
+                </view>
+                <view class="works-tags">
+                    <view wx:for="{{item.illust_tags}}" wx:key="{{item}}" class="tags">
+                    #{{item}}
+                    </view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+        <view wx:if="{{viewType == 2}}" class="image-content" style="font-size: 0; padding-left: 3px; padding-right: 3px">
+          <view bindtap="goDetail" data-item="{{item}}" wx:for="{{images[item.index]}}" wx:key="{{item}}" class="image-item" style="height: {{imageWidth + 'px'}}">
+            <!-- <image src="https://img.tanzijun.com/pixiv/img/76043486/76043486_p0_square1200.png" class="image" data-item="{{item}}" lazy-load="true"></image> -->
+            <image src="{{item.illust_url}}" class="image" data-item="{{item}}" lazy-load="true"></image>
+            <view class="rank">{{item.rank}}</view>
+            <view class="title">{{item.illust_name}}</view>
+            <view class="pages" wx:if="{{item.pages > 1}}">
+              <image src="/assets/pages.svg"></image>
+              <view>{{item.pages}}</view>
+            </view>
+          </view>
+        </view>
+      </scroll-view>
+    </swiper-item>
+  </swiper>
+  <view bindtap="goTop" class="top" wx:if="{{filter.page > 1 && showTop}}">
+    <image src="/assets/top.png"></image>
+  </view>
+</view>

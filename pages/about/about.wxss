@@ -1,0 +1,82 @@
+/**about.wxss**/
+.container {
+  background: #f4f4f4;
+  box-sizing: border-box;
+  height: auto;
+  width: 100%;
+  overflow: hidden
+}
+
+.content {
+  height: 100%;
+  background-color: #ffffff
+}
+.header {
+  width:100%;
+  height: 220rpx;
+  position: relative;
+  overflow: hidden;
+  background: #f4f4f4;
+}
+.header::before {
+  content: '';
+  width: 140%;
+  height: 220rpx;
+  position: absolute;
+  left: -20%;
+  top: 0;
+  border-radius: 0 0 50% 50%;
+  background: #fb7598;
+}
+.header-image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 50%;
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 5rpx;
+  z-index: 10;
+  overflow: hidden
+}
+
+.header-name {
+  max-width: 200rpx;
+  position: absolute;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  top: 140rpx;
+  z-index: 10;
+  overflow: hidden;
+  text-align: center;
+  color: #ffffff
+}
+
+.line {
+  background: #f4f4f4;
+  height: 30px
+}
+
+.action-item {
+  height: 40px;
+  line-height: 40px;
+  border-bottom: 1px solid #eeeeee;
+  font-size: 14px;
+  padding: 0 14px
+}
+
+.contact {
+  background-color: #ffffff;
+  text-align: left;
+  font-size: 14px;
+  color: rgba(0, 0, 0, 0.8);
+  height: 40px;
+  line-height: 40px;
+  padding: 0
+}
+
+.contact::after {
+  border: none
+}

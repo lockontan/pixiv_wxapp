@@ -1,0 +1,45 @@
+<scroll-view class="wrap-image {{show ? 'show' : ''}}" lower-threshold="{{lowerHeight}}" upper-threshold="{{upperHeight}}" scroll-y= "{{!isUp}}" bindscrolltolower="scrolltolower" bindscrolltoupper="scrolltoupper">
+  <image bindtap="preview" data-item="{{item}}" wx:for="{{imgArr}}" wx:key="{{index}}" src="{{item.url}}" mode="widthFix"></image>
+  <scroll-view scroll-y="{{isUp}}" class="work-wrap {{isFixed ? '' : 'work-wrap-normal'}}" scroll-top="{{scrollTop}}" style="height: {{workHeight}}">
+    <view class="work-scroll-wrap" id="work-wrap">
+      <view class="work-head">
+        <view class="work-head-img">
+          <image src="{{detail.user_profile_img}}"></image>
+        </view>
+        <view>
+          <view class="work-title">{{detail.title}}</view>
+          <view class="work-author">{{detail.user_name}}</view>
+          <view class="work-top"></view>
+        </view>
+        <view class="up-down" bindtap="toggleDetail" wx:if="{{isFixed}}">
+          <image src="/assets/down.png" style="transform: {{isUp ? 'rotate(0deg)' : 'rotate(180deg)'}}"></image>
+        </view>
+      </view>
+      <view class="work-other">
+        <view class="work-created">{{detail.created}}</view>
+        <view class="work-read"><view>{{detail.rating_view}}</view>阅读</view>
+        <view class="work-like"><view>{{detail.rating_count}}</view>喜欢 !</view>
+        <view class="work-mark"><view>{{detail.bookmark_user_total}}</view>收藏 !</view>
+      </view>
+      <view class="h3">
+        标签
+      </view>
+      <view class="tags">
+        <view class="tags-item" wx:for="{{tags}}" wx:key="{{index}}">#{{item}}</view>
+      </view>
+      <view class="h3" style="margin-top: 25px; margin-bottom: 15px">
+        简介
+      </view>
+      <rich-text nodes="{{detail.comment_html}}" class="work-desc">
+      </rich-text>
+    </view>
+  </scroll-view>
+  <view class="mask {{ isUp ? 'toggle': ''}}" bindtap="toggleDetail"></view>
+  <view style="height: 1000px" wx:if="{{isFixed}}"></view>
+  <button open-type="share" class="btn-share">
+    <image src="/assets/share.png"></image>
+  </button>
+  <view class="btn-back" bindtap="goBack" wx:if="{{isShare}}">
+    <image src="/assets/back.png"></image>
+  </view>
+</scroll-view>

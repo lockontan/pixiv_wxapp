@@ -1,0 +1,35 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/index/detail",
+    "pages/about/about"
+  ],
+  "tabBar": {
+    "color": "#787878",
+    "custom": true,
+    "selectedColor": "#fb7598",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "排行",
+        "iconPath": "assets/home.png",
+        "selectedIconPath": "assets/home-active.png"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "关于",
+        "iconPath": "assets/about.png",
+        "selectedIconPath": "assets/about-active.png"
+      }
+    ]
+  },
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fa7298",
+    "navigationBarTitleText": "pixiv榜单",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#c43a3a"
+  },
+  "sitemapLocation": "sitemap.json"
+}

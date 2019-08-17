@@ -1,0 +1,13 @@
+{
+  "desc": "pixiv插画, p站",
+  "rules": [
+    {
+    "action": "allow",
+    "page": "pages/index/index"
+    },
+    {
+      "action": "disallow",
+      "page": "pages/index/detail"
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+<!--index.wxml-->
+<view class="container">
+  <view class="content">
+    <view class="header">
+      <view class="header-image" bindtap="showUpload">
+        <open-data type="userAvatarUrl"></open-data>
+      </view>
+      <view class="header-name">
+        <open-data type="userNickName"></open-data>
+      </view>
+    </view>
+    <view class="line"></view>
+    <view class="action">
+      <view class="action-item" bindtap="getDesc">
+        功能简介
+      </view>
+      <view class="action-item" bindtap="getOther">
+        程序声明
+      </view>
+      <view class="action-item">
+        <button open-type='contact' class="contact">反馈建议</button>
+      </view>
+    </view>
+  </view>
+</view>
